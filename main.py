@@ -3,20 +3,17 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from datetime import datetime, timedelta
 
+MIN_PEOPLE = 2
+MAX_PEOPLE = 60
+TRIALS = 100000
+
+
 def main():
-
-    MIN_PEOPLE = 2
-    MAX_PEOPLE = 60
-    TRIALS = 100000
-
-
     def generate_random_birthday():
         return random.randint(0, 365)
 
-
     def generate_n_birthdays(n):
         return [generate_random_birthday() for _ in range(n)]
-
 
     def compare(birthdays):
         unique_birthdays = set(birthdays)
@@ -27,7 +24,6 @@ def main():
         has_match = (num_birthdays != num_unique_birthdays)
 
         return has_match
-
 
     def calculate_probability(n):
         num_match = 0
@@ -48,7 +44,6 @@ def main():
 
         return n_probabilities
 
-
     ns = range(MIN_PEOPLE, MAX_PEOPLE + 1)
     n_probabilities = calculate_probability_for_range(ns)
 
@@ -63,7 +58,6 @@ def main():
     plt.ylabel("Probability")
 
     plt.show()
-
 
 
 if __name__ == '__main__':
